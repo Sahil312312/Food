@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palledar Task 1</title>
+    <link rel="stylesheet" href="css/palledar44.css">
+    <style>
+      .table-wrapper{
+        overflow-x: auto;
+        max-width: 100%;
+      }
+    </style>
+</head>
+<body>
+  <form action="/palledar1" method="POST">
+    <div class="palledar">
+        <h2>
+            PALLEDAR TASK 1 
+        </h2>
+    </div>
+    
+    <div>
+
+        Slip No.: <input type="number" name="slip_no" required>
+        Date: <input type="date" name="date" required>
+        
+    
+       
+        
+    
+        <p>
+            <!-- Truck No. <input type="text" required> -->
+            Time : <input type="time" name="time" required>
+        </p>
+
+<p>
+    Programmer Name: <select name="programmer_name" id="programmer_name"></select>
+        Supervisor To: <select name="supervisor_to" id="supervisor_to"></select>
+    </p>
+    <fieldset>
+      <legend>Type</legend>
+  <p>
+      Tender * : <input type="radio" name="type_contract" value="Tender" id="gender" > Private*: <input type="radio" name="type_contract" id="female" value="Private">
+  </p>
+</fieldset>
+<fieldset>
+      <p>
+       Labour: <input type="checkbox" value="labour" name="type_seller" id="labour">
+       Palledar : <input type="checkbox" value="palledar" name="type_seller" id="palledar">  
+
+       
+    </p>
+    <p>Plot No. : <select name="plot_no1" id="plot_no" ></select></p>
+  </fieldset>
+        </div>
+
+        <div class="table-wrapper" id="originalTable">
+        <table  style="padding: 7px; border:2px solid rgb(237, 224, 224);">
+            <thead>
+                <tr>
+
+                  <th>Party Name</th>
+                    <th>Item Name</th>
+                    <th>SubItem</th>
+                    <th>Quantity</th>
+                    <th>Grade 1</th>
+                    <th>Grade 2</th>
+                    <th>No.of Bag</th>
+                    <th>Bag Size</th>
+                    <th>Bag  Color</th>
+                    
+                    <th>Max Weight</th>
+                    <th>Min Weight</th>
+                    <th>Kotha Type</th>
+                    <th>Kotha No.</th>
+                    
+                    <th>Work Type</th>
+                    <th>Work Type2</th>
+                    <th>Plot No.</th>
+                      <th>Location</th>
+                    <th>Plot No.</th>
+                      <th>Location</th>
+                    
+                    <th>Remark</th>
+                    
+                    
+                </tr>
+            </thead>
+        
+            <tbody>
+                <tr>
+                  <td>
+                    
+                    <div >
+                      <select name="state" id="state"></select>
+                   </div></td>
+                   
+                    <td><select name="item_name" id="item_name"></select></td>
+                    <td><select name="sub_item" id="subitem"></select></td>
+                    <td><input type="number" name="quantity" required><select name="units" id="units"><option value="kg">kg</option></select></td> 
+                    <td><select name="grade1" id="grade1"></select></td>
+                    <td><select name="grade2" id="grade2"></select></td>
+                  
+                    <td><input type="number"  name="no_of_bag"  required ></td>
+                    <td><select name="bagsize" id="bag_size"></select></td>
+                    <td><select name="bag color" id="bag_color"></select></td>
+                    
+                    <td><input type="text" name="max_weight" required></td>
+                    <td><input type="text" name="min_weight" required></td>
+                    <td><select name="kotha_type" id="kotha_type"><option value="Kotha_No(Peepa)">Kotha(Peepa)</option> </select></td>
+                    <td><select name="kotha_no" id="kotha_no"></select></td>
+                    
+                    
+                   <td> 
+                    
+                    <select name="work_type1" id="worktype" onchange="handleWorkTypeChange()">
+                      <option value="none">None</option>
+                        <option value="HodiKatai">Hodi Katai</option>
+                        <option value="DhangtoHodi">Dhang to Hodi</option>
+                        <option value="StocktoDhang">Stock to Dhang</option>
+                        <option value="salai">Salai</option>
+                        <option value="Bharai">Bharai</option>
+                        <option value="BharaiTulai">Bharai Tulai</option>
+                        <option value="BharaiTulaiSalai">Bharai Tulai Salai</option>
+                        <option value="BharaiPeepa">Bharai Peepa</option>
+                        <option value="BharaiTulaiPeepa">Bharai Tulai Peepa</option>
+                        <option value="BharaiTulaiSalaiPeepa">Bharai Tulai Salai Peepa</option>
+                        <option value="Dhang">Dhang</option>
+                    </select>
+                
+
+                
+                </td>
+                   <td>
+                    
+                    <select name="work_type2" id="work_type2" onchange="handleWorkTypeChange2()">
+                      <option value="none">None</option>
+            
+                        <option value="DhangtoDhang">Dhang to Dhang</option>
+     
+                    </select>
+            
+
+
+                </td>
+                    <td><select name="plot_no2" id="plot_no"></select>
+      
+                  </td>
+                    <td><div id="locationContainer"  style="display: none;"> 
+                      <select type="text" name="location1" id="location">
+                  </div>
+                </td>
+                <td> <div class="form-group" id="plotNoContainer" style="display: none;">
+                 
+                  <select type="text" name="plot_no3" id="plotNo2">
+              </div>
+              </td>
+              <td><div class="form-group" id="locationContainer2" style="display: none;">
+               
+                <select type="text" name="location2" id="location2">
+            </div></td>
+
+                <td><input type="text" name="remark"></td>
+                
+                </tr>
+        
+            </tbody>
+
+            <tfoot><td><button class="modify-button" onclick="modifyRow(this)">Modify</button></td></tfoot>
+
+        </table>
+      </div>
+       
+
+        <script>
+          function handleWorkTypeChange() {
+            var workType = document.getElementById("worktype").value;
+            var plotNoContainer = document.getElementById("plotNoContainer");
+            var locationContainer = document.getElementById("locationContainer");
+
+            if (workType.toLowerCase().includes("dhang")) {
+                locationContainer.style.display = "block";
+            } else {
+                locationContainer.style.display = "none";
+            }
+
+            
+        }
+
+       
+      </script>
+        <script>
+          function handleWorkTypeChange2() {
+            var workType2 = document.getElementById("worktype2").value;
+            var plotNoContainer = document.getElementById("plotNoContainer");
+            var locationContainer = document.getElementById("locationContainer");
+            var locationContainer2 = document.getElementById("locationContainer2");
+
+            if (workType2.toLowerCase().includes("dhang")) {
+              plotNoContainer.style.display = "block";
+              
+                locationContainer.style.display = "block";
+                locationContainer2.style.display = "block";
+            } else {
+              plotNoContainer.style.display = "none";
+                locationContainer.style.display = "none";
+                locationContainer2.style.display = "none";
+            }
+
+            
+        }
+
+       
+      </script>
+
+         
+      <div class="buttons-container" id="buttonsContainer"> </div>
+  <div class="save">
+    <button type="save" id="save"> Save</button>
+    <script>
+      function saving(event) {
+        alert("your data is saved")
+      }
+
+      save.addEventListener('click', saving)
+    </script>
+  </div>
+</form>
+
+  <div class="Done">
+    <button type="submit" id="done">Done</button>
+  </div>
+  
+  <script>
+    var done = document.getElementById("done");
+    var salaiButtonCreated = false;
+  
+    done.addEventListener("click", function() {
+      if (!salaiButtonCreated) {
+        var salaiButton = document.createElement("button");
+        salaiButton.textContent = "Salai";
+        salaiButton.classList.add("button");
+        salaiButton.classList.add("salai-button");
+        
+        salaiButton.addEventListener("click", function() {
+          window.location.href = "Salai.html";
+        });
+  
+        var container = document.querySelector(".Done");
+        container.appendChild(document.createElement("br"));
+        container.appendChild(salaiButton);
+        salaiButtonCreated = true;
+      }
+    });
+  </script>
+  
+  
+  <div class="addmore">
+    <button onclick="addTable()" type="add" id="add"> Add More</button>
+    <script>
+      function addTable() {
+        var originalTable = document.getElementById("originalTable");
+        var clonedTable = originalTable.cloneNode(true);
+
+        // Create a delete button
+        var deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.classList.add("delete-button");
+        deleteButton.addEventListener("click", function () {
+          // Remove the table when the delete button is clicked
+          clonedTable.remove();
+        });
+
+        // Append the delete button to the cloned table
+        clonedTable.appendChild(deleteButton);
+
+         // Insert the cloned table above the buttons container
+var buttonsContainer = document.getElementById("buttonsContainer");
+document.body.insertBefore(clonedTable, buttonsContainer);
+      }
+    </script>
+  </div>
+
+  <script>
+    function modifyRow(button) {
+      var row = button.parentNode.parentNode;
+    }
+  </script>
+
+
+
+  <p>
+    Total Bag : <input type="number" name="total_bag" required>
+    Total Quantity : <input type="number" name="total_quantity" required> </p>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salai Details</title>
+    <link rel="stylesheet" href="css/palledar44.css" />
+  </head>
+
+  <body>
+    <form action="salai" method="POST">
+      <div class="palledar">
+        <h2>SALAI DETAILS</h2>
+      </div>
+
+      <table
+        id="originalTable"
+        style="padding: 7px; border: 2px solid rgb(237, 224, 224)"
+      >
+        <thead>
+          <tr>
+            <th>SALAI NAME</th>
+
+            <th>Total No.of Bag</th>
+
+            <th>Salai Work Type</th>
+
+            <th>Modify</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <select name="salai_name" id="salai_name"></select>
+            </td>
+
+            <td><input type="number" name="no_of_bag" required /></td>
+
+            <td><select name="work_type" id="work_type"></select></td>
+
+            <td>
+              <button class="modify-button" onclick="modifyRow(this)">
+                Modify
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="buttons-container" id="buttonsContainer"></div>
+
+      <div class="save">
+        <button type="save" id="save">Save</button>
+        <script>
+          function saving(event) {
+            alert("your data is saved");
+          }
+
+          save.addEventListener("click", saving);
+        </script>
+      </div>
+    </form>
+    <div class="Done">
+      <button type="submit" id="done">Done</button>
+      <div id="buttonContainer"></div>
+      <!-- <script>
+                var done = document.getElementById("done");
+                var buttonContainer = document.getElementById("buttonContainer");
+            
+                done.addEventListener("click", function() {
+                    if (buttonContainer.children.length === 0) {
+                      for (var i = 1; i <= 4; i++) {
+                        var newButton = document.createElement("button");
+                        newButton.textContent = "Palledar " + i;
+                        newButton.classList.add("button");
+                        buttonContainer.appendChild(newButton);
+                      }
+                    }
+                  });
+                
+            </script> -->
+    </div>
+    <div class="addmore">
+      <button onclick="addTable()" type="add" id="add">Add More</button>
+      <script>
+        function addTable() {
+          var originalTable = document.getElementById("originalTable");
+          var clonedTable = originalTable.cloneNode(true);
+
+          // Create a delete button
+          var deleteButton = document.createElement("button");
+          deleteButton.textContent = "Delete";
+          deleteButton.classList.add("delete-button");
+          deleteButton.addEventListener("click", function () {
+            // Remove the table when the delete button is clicked
+            clonedTable.remove();
+          });
+
+          // Append the delete button to the cloned table
+          clonedTable.appendChild(deleteButton);
+
+          // Insert the cloned table above the buttons container
+          var buttonsContainer = document.getElementById("buttonsContainer");
+          document.body.insertBefore(clonedTable, buttonsContainer);
+        }
+      </script>
+    </div>
+
+    <script>
+      function modifyRow(button) {
+        var row = button.parentNode.parentNode;
+        // Access the row data and modify as needed
+        // Example: var itemName = row.cells[2].querySelector('select[name="item_name"]').value;
+        // Perform modifications or show a modal/pop-up for editing the details
+        // Example: Open a modal with pre-filled form fields for modifying the data
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urad UnLoading</title>
+    <link rel="stylesheet" href="website.css">
+</head>
+<body>
+    <div class="loading">
+        <h2>
+            URAD UNLOADING
+        </h2>
+    </div>
+    
+    <div>
+
+        Slip No.: <input type="number" name="slip_no" required>
+        Date: <input type="date" name="date" required>
+        Time : <input type="time" name="time" required>
+    
+       
+        
+    
+        <p>
+            Truck No. <input type="text" required>
+            Driver Name: <input type="text" name="driver_name" required>
+            Driver Mobile No. : <input type="text" name="mobile_no" required>
+       
+        
+           
+        </p>
+
+<p>
+        Programmer Name: <select name="programmer_name" id="programmer_name"></select>
+        Supervisor To: <select name="supervisor_to" id="supervisor_to"></select>
+    </p>
+
+      
+       Labour: <input type="checkbox" name="labour" id="labour">
+       Palledar : <input type="checkbox" name="palledar" id="palledar">
+
+      <p> Time Limit: <input type="time" required></p>
+
+       <div class="form-group">
+        <label for="type">Type:</label>
+        <select id="type" onchange="handleTypeChange()">
+          <option value="tender">Tender</option>
+          <option value="pvt">Pvt</option>
+        </select>
+      </div>
+
+      <script>
+        function handleTypeChange() {
+          var type = document.getElementById("type").value;
+          var tenderFields = document.getElementById("tenderFields");
+          var pvtFields = document.getElementById("pvtFields");
+    
+          if (type === "tender") {
+            tenderFields.style.display = "block";
+            pvtFields.style.display = "none";
+          } else if (type === "pvt") {
+            tenderFields.style.display = "none";
+            pvtFields.style.display = "flex";
+          }
+        }
+      </script>
+
+        </div>
+
+        <table id="originalTable" style="padding: 7px; border:2px solid rgb(237, 224, 224);">
+            <thead>
+                <tr>
+
+                    <th>Type</th>
+                    <th>Item Name</th>
+                    <th>SubItem</th>
+                    <th>Quantity</th>
+                    <th>Grade 1</th>
+                    <th>Grade 2</th>
+                    
+                    <th>No.of Bag</th>
+                    <th>Bag Size</th>
+                    <th>Bag  Color</th>
+                    
+                    <th>Work Type</th>
+                    <th>Plot No.</th>
+                    <th>Location</th>
+                    <th>Remark</th>
+                    <th>Kanta Name</th>
+                    <th>Modify</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                <tr>
+                    <td> <div id="tenderFields" class="form-group">
+                      Block: <select name="stationName" id="stationName"></select>
+                      Area : <select name="state" id="state"></select>
+                     </div>
+                     
+                     <div id="pvtFields" class="form-group vertical-col">
+                     
+                      Party Name : <select name="state" id="state"></select>
+                    </div></td>
+                   
+                    <td><select name="item_name" id="item_name"></select></td>
+                    <td><select name="subitem" id="subitem"></select></td>
+                    <td><input type="number" name="quantity" required><select name="units" id="units"><option value="kg">kg</option></select></td> 
+                    <td><select name="grade1" id="grade1"></select></td>
+                    <td><select name="grade2" id="grade2"></select></td>
+                  
+                    <td><input type="number"  name="No_of_bag"  required ></td>
+                    <td><select name="bagsize" id="bagsize"></select></td>
+                    <td><select name="bag color" id="bag color"></select></td>
+                   <td><select name="worktype" id="worktype"></select></td>
+                   <td><select name="plot_no" id="plot_no"></select></td>
+                    <td><select name="location" id="location"></select></td>
+                    <td><input type="text"  name="remark"  required ></td>
+                    <td><select name="kanta_name" id="kanta_name"></select></td>
+                    <td><button class="modify-button" onclick="modifyRow(this)">Modify</button></td>
+                </tr>
+        
+            </tbody>
+
+        </table>
+
+     
+
+
+        <div class="buttons-container" id="buttonsContainer"> </div>
+        
+        <div class="save">
+          <button type="save" id="save"> Save</button>
+          <script>
+            function saving(event) {
+              alert("your data is saved")
+            }
+      
+            save.addEventListener('click', saving)
+          </script>
+        </div>
+      
+        <div class="Done">
+          <button type="submit" id="done">Done</button>
+          <div id="buttonContainer"></div>
+          <script>
+            var done = document.getElementById("done");
+            var buttonContainer = document.getElementById("buttonContainer");
+        
+            done.addEventListener("click", function() {
+              buttonContainer.innerHTML = '';
+        
+              for (var i = 1; i <= 4; i++) {
+                var palledarButton = document.createElement("button");
+                palledarButton.textContent = "Palledar " + i;
+                palledarButton.classList.add("button");
+                buttonContainer.appendChild(palledarButton);
+        
+                palledarButton.addEventListener("click", function() {
+                  var palledarIndex = i;
+                  var selfButton = document.createElement("button");
+                  selfButton.textContent = "Self";
+                  selfButton.classList.add("button");
+        
+                  var programmerButton = document.createElement("button");
+                  programmerButton.textContent = "Programmer Name";
+                  programmerButton.classList.add("button");
+        
+                  palledarButton.innerHTML = ''; // Remove previous content
+                  palledarButton.appendChild(selfButton);
+                  palledarButton.appendChild(programmerButton);
+                });
+              }
+            });
+          </script>
+        </div>
+        <div class="addmore">
+          <button onclick="addTable()" type="add" id="add"> Add More</button>
+          <script>
+            function addTable() {
+              var originalTable = document.getElementById("originalTable");
+              var clonedTable = originalTable.cloneNode(true);
+      
+              // Create a delete button
+              var deleteButton = document.createElement("button");
+              deleteButton.textContent = "Delete";
+              deleteButton.classList.add("delete-button");
+              deleteButton.addEventListener("click", function () {
+                // Remove the table when the delete button is clicked
+                clonedTable.remove();
+              });
+      
+              // Append the delete button to the cloned table
+              clonedTable.appendChild(deleteButton);
+      
+               // Insert the cloned table above the buttons container
+var buttonsContainer = document.getElementById("buttonsContainer");
+document.body.insertBefore(clonedTable, buttonsContainer);
+            }
+          </script>
+        </div>
+      
+        <script>
+          function modifyRow(button) {
+            var row = button.parentNode.parentNode;
+            // Access the row data and modify as needed
+            // Example: var itemName = row.cells[2].querySelector('select[name="item_name"]').value;
+            // Perform modifications or show a modal/pop-up for editing the details
+            // Example: Open a modal with pre-filled form fields for modifying the data
+          }
+        </script>
+      
+      
+
+        <p>
+          Total Bag : <input type="number" name="total" required>
+          Total Quantity : <input type="number" name="total" required> </p>
+      </body>
+      
+      </html>

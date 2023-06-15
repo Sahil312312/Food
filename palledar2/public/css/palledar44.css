@@ -1,0 +1,150 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 5px;
+    padding: 0;
+    font-weight: 600;
+    background-color: #f3efef;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .palledar {
+    background-color: #e3cd40;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    padding: 12px;
+    border: 1px solid #ccc;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  input[type="number"],
+  input[type="date"],
+  input[type="time"],
+  select {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .vertical-col {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkbox-group label {
+    margin-right: 10px;
+  }
+  
+  .modify-button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .delete-button {
+    padding: 8px 16px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .save,
+  .Done,
+  .addmore {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .save button {
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  .Done button {
+    padding: 12px 24px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .salai-button {
+    margin-top: 10px; 
+  }
+  .addmore button {
+    padding: 12px 24px;
+    background-color: #e3cd40;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width: 768px) {
+    table {
+      font-size: 14px;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    table {
+      font-size: 12px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .container {
+      padding: 10px;
+    }
+  
+    th, td {
+      padding: 10px;
+    }
+  
+    .modify-button,
+    .delete-button,
+    button {
+      padding: 10px 20px;
+    }
+  }
+  

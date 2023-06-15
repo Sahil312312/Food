@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palledar Task 3</title>
+    <link rel="stylesheet" href="css/palledar44.css">
+</head>
+<body>
+  <form action="/palledar3" method="POST">
+    <div class="palledar">
+        <h2>
+            PALLEDAR TASK 3 
+        </h2>
+    </div>
+    
+    <div>
+
+        Slip No.: <input type="number" name="slip_no" required>
+        Date: <input type="date" name="date" required>
+        
+    
+       
+        
+    
+        <p>
+            <!-- Truck No. <input type="text" required> -->
+            Time : <input type="time" name="time" required>
+        </p>
+
+<p>
+    Programmer Name: <select name="programmer_name" id="programmer_name"></select>
+        Supervisor To: <select name="supervisor_to" id="supervisor_to"></select>
+    </p>
+    <fieldset>
+      <legend>Type</legend>
+  <p>
+      Tender * : <input type="radio" name="type_contract" value="Tender" > Private*: <input type="radio" name="type_seller" value="private">
+  </p>
+</fieldset>
+<fieldset>
+      <p>
+       Labour: <input type="checkbox" name="Type_seller" id="labour">
+       Palledar : <input type="checkbox" name="palledar" id="palledar">  
+
+       <p> Name : <select name="type3" id="type3" onchange="handleWorkTypeChange3()"></p>
+        <option value="none">None</option>
+        <option value="roll_name" id="roll_name">Roll Name</option>
+        <option value="master_bag_name" id="master_bag_name">Master Bag Name</option>
+      </select>
+    </p>
+  </fieldset>
+        </div>
+
+        <table id="originalTable" style="padding: 7px; border:2px solid rgb(237, 224, 224);">
+            <thead>
+                <tr>
+
+                  <th>Vendor Name</th>
+                  <th>Bag Deatils</th>
+                    <th>Bill No.</th>
+                  
+                    
+                    
+                    
+                    <th>Work Type</th>
+                    
+                    
+                    <th>Plot No.</th>
+                      <th>Location</th>
+                      <th>Remark</th>
+                      <th>Modify</th>
+                    
+                </tr>
+            </thead>
+        
+            <tbody>
+                <tr>
+                  <td> 
+                 
+                 <div id="pvtFields">
+
+                   <select name="party_name" id="party_name"></select>
+                 </div></td>
+                   
+                 <td>
+                  <div id="Name_subdetails"></div>
+                </td>
+
+    
+                    <td><input type="number" name="bill_no" required></td> 
+                   
+                    
+                   
+                   <td> 
+                    
+                    <select name="worktype" id="work_type" >
+                      <option value="none">None</option>
+                        <option value="DirectStore">Direct Store</option>
+                        <option value="TulaiStore">Tulai Store</option>
+                      
+                    </select>
+                </div>
+
+                
+
+               
+                
+                </td>
+                  
+                    <td><select type="number"  name="plot_no"   >
+      
+                  </td>
+                    <td>
+                      <select type="text" name="location" id="location">
+                  
+                </td>
+                
+
+                <td><input type="text" name="remark"></td>
+                <td><button class="modify-button" onclick="modifyRow(this)">Modify</button></td>
+                </tr>
+        
+            </tbody>
+
+
+          
+
+
+                        <!-- for roll and master bag -->
+   <script>
+    function handleWorkTypeChange3() {
+      var type3 = document.getElementById("type3").value;
+      var Name_subdetails = document.getElementById("Name_subdetails");
+  
+      // Clear previous inputs
+      Name_subdetails.innerHTML = "";
+  
+      if (type3 === "roll_name") {
+        createRollInputs(Name_subdetails);
+      } else if (type3 === "master_bag_name") {
+        createBagInputs(Name_subdetails);
+      }
+    }
+  
+    function createRollInputs(container) {
+      var rollNoInput = document.createElement("input");
+      rollNoInput.type = "text";
+      rollNoInput.name = "no_of_roll";
+      rollNoInput.placeholder = "No. of Roll";
+  
+      var rollColorInput = document.createElement("input");
+      rollColorInput.type = "text";
+      rollColorInput.name = "roll_color";
+      rollColorInput.placeholder = "Roll Color";
+  
+      var rollSizeInput = document.createElement("input");
+      rollSizeInput.type = "text";
+      rollSizeInput.name = "roll_size";
+      rollSizeInput.placeholder = "Roll Size";
+  
+      container.appendChild(rollNoInput);
+      container.appendChild(rollColorInput);
+      container.appendChild(rollSizeInput);
+    }
+  
+    function createBagInputs(container) {
+
+      var bagNoInput = document.createElement("input");
+      bagNoInput.type = "text";
+      bagNoInput.name = "no_of_bag";
+      bagNoInput.placeholder = "No_of_Bag";
+      var bagColorInput = document.createElement("input");
+      bagColorInput.type = "text";
+      bagColorInput.name = "bag_color";
+      bagColorInput.placeholder = "Bag Color";
+  
+      var bagSizeInput = document.createElement("input");
+      bagSizeInput.type = "text";
+      bagSizeInput.name = "bag_size";
+      bagSizeInput.placeholder = "Bag Size";
+  
+      
+  
+      container.appendChild(bagColorInput);
+      container.appendChild(bagSizeInput);
+      container.appendChild(bagNoInput);
+    }
+  </script>
+
+        </table>
+
+
+       
+        
+
+            <div class="buttons-container" id="buttonsContainer"> </div>
+     
+  <div class="save">
+    <button type="save" id="save"> Save</button>
+    <script>
+      function saving(event) {
+        alert("your data is saved")
+      }
+
+      save.addEventListener('click', saving)
+    </script>
+  </div>
+</form>
+  <div class="Done">
+    <button type="submit" id="done"> Done</button>
+    <div id="buttonContainer"></div>
+    <!-- <script>
+                var done = document.getElementById("done");
+                var buttonContainer = document.getElementById("buttonContainer");
+            
+                done.addEventListener("click", function() {
+                    if (buttonContainer.children.length === 0) {
+                      for (var i = 1; i <= 4; i++) {
+                        var newButton = document.createElement("button");
+                        newButton.textContent = "Palledar " + i;
+                        newButton.classList.add("button");
+                        buttonContainer.appendChild(newButton);
+                      }
+                    }
+                  });
+                
+            </script> -->
+  </div>
+  <div class="addmore">
+    <button onclick="addTable()" type="add" id="add"> Add More</button>
+    <script>
+      function addTable() {
+        var originalTable = document.getElementById("originalTable");
+        var clonedTable = originalTable.cloneNode(true);
+
+        // Create a delete button
+        var deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.classList.add("delete-button");
+        deleteButton.addEventListener("click", function () {
+          // Remove the table when the delete button is clicked
+          clonedTable.remove();
+        });
+
+        // Append the delete button to the cloned table
+        clonedTable.appendChild(deleteButton);
+
+         // Insert the cloned table above the buttons container
+var buttonsContainer = document.getElementById("buttonsContainer");
+document.body.insertBefore(clonedTable, buttonsContainer);
+      }
+    </script>
+  </div>
+
+  <script>
+    function modifyRow(button) {
+      var row = button.parentNode.parentNode;
+     
+    }
+  </script>
+
+  <p>
+    Total Bag : <input type="number" name="total_bag" required>
+    Total Quantity : <input type="number" name="total_quantity" required> </p>
+
+
+</body>
+
+</html>
